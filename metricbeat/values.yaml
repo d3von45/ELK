@@ -39,7 +39,7 @@ daemonset:
           - pod
           - system
           - volume
-        period: 10s
+        period: 20s
         host: "${NODE_NAME}"
         hosts: ["https://${NODE_NAME}:10250"]
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
@@ -55,7 +55,7 @@ daemonset:
         metricsets:
           - event
       - module: system
-        period: 10s
+        period: 20s
         metricsets:
           - cpu
           - load
@@ -140,7 +140,7 @@ deployment:
           - state_replicaset
           - state_pod
           - state_container
-        period: 10s
+        period: 20s
         hosts: ["${KUBE_STATE_METRICS_HOSTS}"]
       output.elasticsearch:
         hosts: '${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
@@ -177,7 +177,7 @@ extraInitContainers: ""
 hostPathRoot: /var/lib
 
 image: "docker.elastic.co/beats/metricbeat"
-imageTag: "7.17.3"
+imageTag: "6.5.2"
 imagePullPolicy: "IfNotPresent"
 imagePullSecrets: []
 

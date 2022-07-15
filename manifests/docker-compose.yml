@@ -21,7 +21,7 @@ services:
   elasticsearch:
     container_name: elasticsearch
     hostname: elasticsearch
-    image: elasticsearch:6.5.2
+    image: elasticsearch:7.17.3
     build:
       context: elasticsearch
       dockerfile: Dockerfile
@@ -41,10 +41,11 @@ services:
       
   kibana:
     hostname: kibana
-    image: kibana:6.5.2
+    image: kibana:7.17.3
     container_name: kibana
     environment:
       - "LOGGING_QUIET=true"
-      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+      - "ELASTICSEARCH_URL=http://192.168.1.8:9200"
+      - "ELASTICSEARCH_HOSTS=http://192.168.1.8:9200"
     ports:
       - 5601:5601
